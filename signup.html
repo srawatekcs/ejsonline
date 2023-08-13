@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Sign up</h1>
+    
+    <div style=" padding-top: 20px; display: flex; justify-content: center;">
+Email: <input type="email" id="email">
+Password: <input type="password" id="password">
+<button onclick="submit()">Submit</button>
+</div>
+<script>
+function submit()
+{
+
+let email = document.getElementById('email').value
+let password = document.getElementById('password').value
+
+fetch("/signup", {method:"POST", headers: {'Content-Type':'application/json'}, body: JSON.stringify({email, password})} ).then((res)=>{return res.json()})
+.then((fres)=>{alert(fres.message)})
+
+
+}
+
+
+</script>
+
+</body>
+</html>
